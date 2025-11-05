@@ -4,7 +4,6 @@ Author : faizy
 Version : 2.0
 */
 
-
 /* Reset & Body */
 * {
   margin: 0;
@@ -17,7 +16,7 @@ body {
   background-color: #fff;
   color: #0b1540;
   height: 100%;
-  padding-top:; 
+  /* padding-top:;  */
 }
 
 
