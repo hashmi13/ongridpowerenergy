@@ -39,7 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
       <div class="contact-form-box">
         <h2>CONTACT US</h2>
-        <p>We will get back to you within 24 hours or call us if you need immediate assistance 9978458710</p>
+        <p>We will get back to you within 2444 hours or call us if you need immediate assistance 9978458710</p>
 
         <form method="post" action="">
           <div class="form-row">
