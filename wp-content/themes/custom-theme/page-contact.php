@@ -1,6 +1,32 @@
 <?php
-
 get_header();
+
+// Handle form submission
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+  $first_name = sanitize_text_field($_POST['first_name']);
+  $last_name  = sanitize_text_field($_POST['last_name']);
+  $email      = sanitize_email($_POST['email']);
+  $phone      = sanitize_text_field($_POST['phone']);
+  $message    = sanitize_textarea_field($_POST['message']);
+
+  $to = get_option('admin_email'); // Admin email from WP settings
+  $subject = "New Contact Form Submission from $first_name $last_name";
+
+  $body = "You have received a new message from your website contact form:\n\n";
+  $body .= "Name: $first_name $last_name\n";
+  $body .= "Email: $email\n";
+  $body .= "Phone: $phone\n\n";
+  $body .= "Message:\n$message\n";
+
+  $headers = array('Reply-To: ' . $email);
+
+  // Send the email
+  if (wp_mail($to, $subject, $body, $headers)) {
+    echo '<p style="color: green; text-align:center; margin-top:20px;">✅ Thank you! Your message has been sent successfully.</p>';
+  } else {
+    echo '<p style="color: red; text-align:center; margin-top:20px;">❌ Sorry, something went wrong. Please try again later.</p>';
+  }
+}
 ?>
 
 <section class="contact-hero">
@@ -27,10 +53,7 @@ get_header();
         </form>
       </div>
     </div>
- 
   </div>
-  
-  
 </section>
 
 <?php get_footer(); ?>
